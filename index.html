@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de descuentos</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./main.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Bienvenido a nuestra calculadora de descuentos</h1>
+                </div>
+                <div class="border border-black rounded mt-3 mb-3 ms-1 me-1">
+                    <h4>Puedes seleccionar hasta tres de nuestros artículos, iguales o no, y la calculadora le aplicará
+                        al
+                        primer artículo un descuento del 10%, al segundo un descuento del 20% y al tercero un descuento
+                        del 30%.</h4>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-9">
+                <div class="container mt-2 text-center">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-block">
+                                <h3 class="card-title mt-3 mb-3">Pantalón de jeans</h3>
+                                <img class="card-img" src="./images/pantalon_jeans.jpg" alt="pantalón de jeans">
+                                <p class="card-text"><b>El precio de este artículo es de $2000</b></p>
+                                <button type="button" id="btn-jeans" class="btn btn-primary btn-lg jeans-text">Agregar a la
+                                    calcualdora de
+                                    descuentos</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-block">
+                                <h3 class="card-title mt-3 mb-3">Pantalón de vestir</h3>
+                                <img class="card-img" src="./images/pantalon_de_vestir.jpg" alt="pantalón de vestir">
+                                <p class="card-text"><b>El precio de este artículo es de $2500</b></p>
+                                <button type="button" id="btn-vestir" class="btn btn-primary btn-lg">Agregar a la calcualdora de
+                                    descuentos</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-block">
+                                <h3 class="card-title mt-3 mb-3">Remera</h3>
+                                <img class="card-img" src="./images/remera.jpg" alt="Remera">
+                                <p class="card-text"><b>El precio de este artículo es de $900</b></p>
+                                <button type="button" id="btn-remera" class="btn btn-primary btn-lg">Agregar a la calcualdora de
+                                    descuentos</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mt-2 text-center">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 ">
+                                <div class="card card-block">
+                                    <h3 class="card-title mt-3 mb-3">Buzo</h3>
+                                    <img class="card-img" src="./images/buzo.jpg" alt="Buzo">
+                                    <p class="card-text"><b>El precio de este artículo es de $1200</b></p>
+                                    <button type="button" id="btn-buzo" class="btn btn-primary btn-lg">Agregar a la calcualdora de
+                                        descuentos</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 ">
+                                <div class="card card-block">
+                                    <h3 class="card-title mt-3 mb-3">Camisa</h3>
+                                    <img class="card-img" src="./images/camisa.jpg" alt="Camisa">
+                                    <p class="card-text"><b>El precio de este artículo es de $1600</b></p>
+                                    <button type="button" id="btn-camisa" class="btn btn-primary btn-lg">Agregar a la calcualdora de
+                                        descuentos</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 ">
+                                <div class="card card-block">
+                                    <h3 class="card-title mt-3 mb-3">Medias</h3>
+                                    <img class="card-img" src="./images/medias.jpg" alt="Medias">
+                                    <p class="card-text"><b>El precio de este artículo es de $300</b></p>
+                                    <button type="button" id="btn-medias" class="btn btn-primary btn-lg">Agregar a la calcualdora de
+                                        descuentos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <ol id="lista_articulos" class=" lista list-group list-group-numbered">
+                  
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Calculadora de descuentos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-calculadora"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Comprar estos artículos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer container-fluid mt-5 border rounded-3">
+        <h4 class="text-center">Si tienes dudas puedes escribir un mail a cualquiera de nuestros colaboradores y te responderán a la brevedad</h4>
+        <div id="ulMails"></div>
+    </footer>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
