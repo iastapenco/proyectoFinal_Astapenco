@@ -23,9 +23,11 @@ let preciosSinDescuento = 0;
 function inicializarArticulosSeleccionados() {
     const articulosStorage = localStorage.getItem("articulos_seleccionados");
     const articulosParsed = JSON.parse(articulosStorage);
-    if(articulosParsed != null && articulosParsed.length > 2){localStorage.removeItem("articulos_seleccionados")}
-    return articulosParsed != null ? articulosParsed : [] ;
-    
+    if (articulosParsed != null && articulosParsed.length > 2) {
+        localStorage.removeItem("articulos_seleccionados")
+    }
+    return articulosParsed != null ? articulosParsed : [];
+
 };
 
 //Esta función pushea los artículos seleccionados al array articulosSeleccionados y lo almacena en el Local Storage.
@@ -58,7 +60,7 @@ function obtenerArticulo(nombreArticulo) {
 function agregarAListaDeSeleccionados(articulo) {
     const li = document.createElement("li");
     li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-start");
-    
+
     const div = document.createElement("div");
     div.setAttribute("class", "ms-2 me-auto");
 
@@ -66,11 +68,11 @@ function agregarAListaDeSeleccionados(articulo) {
     divBold.setAttribute("class", "fw-bold");
 
     divBold.textContent = articulo.nombre;
-    
+
     div.appendChild(divBold);
-    div.appendChild(document.createTextNode(`$ ${articulo.precio}`)) ;
+    div.appendChild(document.createTextNode(`$ ${articulo.precio}`));
     li.appendChild(div);
-    
+
     const ol = document.getElementById("lista_articulos");
 
     ol.appendChild(li);
@@ -89,7 +91,7 @@ function agregadoCorrectamente(botonId) {
         title: 'Agregado correctamente',
         showConfirmButton: false,
         timer: 1500
-      })
+    })
 }
 
 //Manejadores de eventos.
@@ -152,22 +154,22 @@ console.log(descuentosFinales);
 const jasonPlaceHolder = "https://jsonplaceholder.typicode.com/users";
 const ulMails = document.getElementById("ulMails");
 
-setInterval(() => {
-    fetch(jasonPlaceHolder)
+fetch(jasonPlaceHolder)
     .then(response => response.json())
-    .then((datos)=>{
-        mostrarColaboradores(datos);
+    .then((datos) => {
+        const arrayColaboradores = datos.slice(0, 3);
+        mostrarColaboradores(arrayColaboradores);
     })
     .catch(error => console.log(error));
-
-    function mostrarColaboradores(datos) {
-        datos.forEach(colaborador => {
-            const li = document.createElement("li");
-            li.textConten = `${colaborador.name}:${colaborador.email} - ${colaborador.phone}`;
-            ulMails.appendChild(li);
-        })
-    }
-}, 250);
-
-
-
+    
+function mostrarColaboradores(arrayColaboradores) {
+        arrayColaboradores.forEach(colaborador => {
+        const li = document.createElement("li");
+        const anchor = document.createElement("a");
+        anchor.setAttribute("href", `mailto:${colaborador.email}`);
+        anchor.setAttribute("class", "anchor");
+        anchor.textContent = `${colaborador.name}`;
+        li.appendChild(anchor);
+        ulMails.appendChild(li);
+    })
+}

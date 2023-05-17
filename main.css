@@ -4,6 +4,17 @@
 }
 
 .footer {
-    height: 6rem;
-    background-color: #686868;
+    height: fit-content;
+    color: white;
+}
+
+.anchor {
+    text-decoration: none;
+    color: white;
+}
+
+.anchor:hover {
+    color: yellow;
+    cursor: pointer;
+    transition: 0.5s;
 }
